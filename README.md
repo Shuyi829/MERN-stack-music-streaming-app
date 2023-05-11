@@ -27,7 +27,13 @@ Before you can run the project, you must have the following installed:
   - Start the MongoDB server: After installing MongoDB, you can start the server using the `mongod` command. You can change the port using the `--port` option.
 
   - Connect to the server: 
-
+    
+    Open a terminal (such as PowerShell on Windows) to move to the installation directory of MongoDB, like:
+    `````
+    cd C:\Program Files\MongoDB\Server\6.0\bin
+    `````
+    
+    Run the following command to connect to the database:
     `````
     mongod --dbpath <your-mongodb-data-directory>    # ...\data\db
     `````
