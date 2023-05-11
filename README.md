@@ -60,13 +60,13 @@ MONGO_URI=<your-mongodb-uri>
 
 ​		Replace `<your-mongodb-uri>` with the URI of your MongoDB database(usually mongodb://localhost:27017).
 
-3. Start the server. In the `backend` directory, run:
+3. Start the server. In the `BackEnd` directory, run:
 
 ```
 npm run start
 ```
 
-4. Start the client. In the `frontend` directory, run:
+4. Start the client. In the `FrontEnd` directory, run:
 
 ```
 npm run start
