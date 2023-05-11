@@ -1,4 +1,4 @@
-# Pokemon Manage System
+# Music streaming service interface
 
 This project is a front-end and back-end separated Vue project. The front-end is built using React, Ant Design, and Axios. The back-end is built using Node.js, Mongoose, and MongoDB. This README file is intended to provide guidance for other developers to run the demo on their local machines and understand the codebase.
 
