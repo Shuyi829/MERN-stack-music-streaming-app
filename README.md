@@ -77,7 +77,7 @@ npm run start
 ```
 npm run start
 ```
-The server will automatically open a window in your browser.
+If you encounter any compilation problems in the first time,please close the FrontEnd port and try again.
 
 5. 
 ```
