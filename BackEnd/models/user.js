@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 const {ObjectId} =require('mongodb');
-var url = "mongodb://localhost:27017/song";
-var databasename="song";
+var url = "mongodb://localhost:27017/music";
+var databasename="music";
 var filename="user";
 
 
@@ -68,11 +68,6 @@ const updateModel=async(postData)=>{
     }
     return bl;
 }
-
-
-
-
-
 
 module.exports={
     registerModel,
