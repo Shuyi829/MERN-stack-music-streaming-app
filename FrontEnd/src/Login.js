@@ -17,6 +17,7 @@ function Login() {
   let handleSubmit = e => {
     e.preventDefault();
     if(email!="" && password!=""){
+      // eslint-disable-next-line no-undef
       $.ajax({
         type:"post",
         url:"http://localhost:3007/login",
