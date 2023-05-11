@@ -2,10 +2,10 @@ const{
     registerModel,
     updateModel,
     findEmailModel,
-}=require(process.cwd()+'/models/user');    
-const LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./scratch');
-const ejs=require('ejs');
+}=require(process.cwd()+'/models/user');
+const{
+    getToken
+}=require(process.cwd()+'/models/token');    
 const fs = require('fs');
 const bcrypt=require('bcrypt');
 //导入 JWT 相关的两个包，分别是 jsonwebtoken 和 express-jwt
@@ -14,8 +14,6 @@ const expressjwt = require('express-jwt');
 const secretKey = 'spotify';
 const {schemaRegisterUpdate,schemaLogin}=require(process.cwd()+'/util/joi');
 const Joi = require('joi');
-
-
 
 
 //用户注册控制层
@@ -45,8 +43,8 @@ const register=async(req,res)=>{
 
 //用户登录控制层
 const login=async(req,res)=>{
-    console.log(req.body.email);
     let postData=req.body;
+    console.log(postData);
     try{
         await schemaLogin.validateAsync({ email: postData.email,password:postData.password});
         var result=await findEmailModel(postData.email);
@@ -56,12 +54,14 @@ const login=async(req,res)=>{
             // 验证密码是否相同，第一个参数是传过来的密码，第二个是数据库存的密码
             var isValidate =await bcrypt.compareSync(password, sjpassword);
             if(isValidate){
+                const access_token=await getToken();
                 result[0].password=password;
-                const tokenStr = jwt.sign({ user: result[0] }, secretKey, { expiresIn: '1200s' });
+                const tokenStr = jwt.sign({ user: result[0] }, secretKey, { expiresIn: '3600s' });
                 res.send({
                     status: 200,
                     message: 'Successful Login',
-                    token: tokenStr // 要发送给客户端的 token 字符串,
+                    token: tokenStr, // 要发送给客户端的 token 字符串,
+                    access_token:access_token
                 });
             }else{
                 res.send({
